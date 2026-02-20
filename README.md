@@ -1,13 +1,29 @@
 # Text-to-SQL Fine-Tuning with Flan-T5-Large + LoRA
 
+[![Live Demo](https://img.shields.io/badge/🤗%20HuggingFace-Live%20Demo-brightgreen)](https://huggingface.co/spaces/artmiss/text-to-sql)
+[![Model](https://img.shields.io/badge/🤗%20HuggingFace-Model-blue)](https://huggingface.co/artmiss/flan-t5-large-spider-text2sql)
+[![Dataset](https://img.shields.io/badge/Dataset-Spider-orange)](https://huggingface.co/datasets/xlangai/spider)
+
 Fine-tuning `google/flan-t5-large` on the [Spider](https://huggingface.co/datasets/xlangai/spider) benchmark dataset to translate natural language questions into SQL queries, using parameter-efficient fine-tuning via LoRA (Low-Rank Adaptation).
 
-**Result: 22.4% exact match and 80% ROUGE-1 score on Spider validation set** — achieved with a 780M parameter model, LoRA adapters (~1.9% trainable parameters), and 3 hours of training on a single L4 GPU.
+**Result: 22.4% exact match and 80% ROUGE-1 score on Spider validation set** — achieved with a 780M parameter model, LoRA adapters, and 3 hours of training on a single L4 GPU.
+
+---
+
+## Live Demo
+
+**Try it in your browser — no setup required:**
+👉 [huggingface.co/spaces/artmiss/text-to-sql](https://huggingface.co/spaces/artmiss/text-to-sql)
+
+Build a schema by adding tables and columns one by one, type a natural language question, and get a syntax-highlighted SQL query back instantly.
+
+> **Note:** The demo runs on a free CPU instance. First load after inactivity may take ~30 seconds to wake up. Inference takes ~10–20 seconds per query.
 
 ---
 
 ## Table of Contents
 
+- [Live Demo](#live-demo)
 - [Project Overview](#project-overview)
 - [Dataset](#dataset)
 - [Model Architecture & LoRA](#model-architecture--lora)
@@ -251,7 +267,6 @@ dataset['train'] = dataset['train'].map(
     remove_columns=dataset['train'].column_names,  # critical
 )
 ```
-
 
 ### 4. Out-of-Range Token IDs in Predictions
 
